@@ -1,6 +1,5 @@
 import React from 'react'
 import './home.css'
-import { Link, Outlet } from 'react-router-dom'
 import Navbar from '../Navbar/Navbar';
 import {RiMovieLine,RiHistoryFill} from "react-icons/ri";
 import {PiMusicNotesLight} from "react-icons/pi";
@@ -8,7 +7,7 @@ import {MdOutlineLibraryMusic,MdOutlineSubscriptions,MdOutlineAppShortcut} from 
 import { AiOutlineHome} from "react-icons/ai";
 import { HiOutlineShoppingBag,HiOutlineTrendingUp} from "react-icons/hi";
 import CardUi from './CardUi';
-import { Image, Card, Button, Divider, Stack, ButtonGroup, Heading, Box, Text, CardBody, CardFooter } from '@chakra-ui/react'
+import { Divider, Box, Text,  } from '@chakra-ui/react'
 import './home.css'
 import ButtonComp from './ButtonComp';
 const Home = () => {

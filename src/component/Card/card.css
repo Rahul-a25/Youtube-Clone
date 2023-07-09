@@ -14,12 +14,7 @@
     /* border: 2px solid gray; */
    
 }
-.right .chakra-card{
-    /* border: 2px solid black; */
-    box-shadow: 0px 0px 10px gray;
-    
-    
-}
+
 .btnwala{
     display: flex;
     justify-content: space-around;
@@ -40,11 +35,12 @@
 .carditem{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    /* border: 2px solid red; */
 
 }
 .carditem .chakra-card{
-    margin-top: 10px;
-    box-shadow: 0px 0px 10px black;
+    margin-top: 15px;
+    /* box-shadow: 0px 0px 10px black; */
 }
 .cardwala img{
     border-radius: 20px;

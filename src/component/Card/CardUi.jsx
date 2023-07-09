@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { AspectRatio, Card, Box } from '@chakra-ui/react'
-import { Image, Stack, Heading, Text, CardHeader, CardBody, CardFooter } from '@chakra-ui/react'
+import React, { useContext, useEffect} from 'react'
+import {Card, Box } from '@chakra-ui/react'
+import { Image,  Text} from '@chakra-ui/react'
 import './card.css'
 import axios from 'axios';
 import { Link } from 'react-router-dom';
@@ -9,28 +9,32 @@ import { myContext } from '../context/context';
 
 const CardUi = () => {
 
-  const { Data, SetData } = useContext(myContext)
-  const options = {
-    method: 'GET',
-    url: 'https://imdb-top-100-movies1.p.rapidapi.com/',
-    headers: {
-      'X-RapidAPI-Key': '5d1be82a77msh43aa564869ec706p1ecc1cjsn0e9743c0cec3',
-      'X-RapidAPI-Host': 'imdb-top-100-movies1.p.rapidapi.com'
-    }
-  };
-  useEffect(() => {
-    getAllMovies()
-
-  }, [])
-  const getAllMovies = async () => {
+  const { Data, DataFilter,SetData,SetDataFilter } = useContext(myContext)
+ console.log((DataFilter));
+  const  getAllMovies = async () => {
+    const options = {
+      method: 'GET',
+      url: 'https://imdb-top-100-movies.p.rapidapi.com/',
+      headers: {
+        'X-RapidAPI-Key': 'ec9e88d300msh4dcc43b3c069161p144880jsn819ba87be57d',
+        'X-RapidAPI-Host': 'imdb-top-100-movies.p.rapidapi.com'
+      }
+    };
+    
     try {
-      const res = await axios.request(options);
-      SetData(res.data)
-      console.log(res.data);
+      const response = await axios.request(options);
+      SetData(response.data);
+      SetDataFilter(response.data);
     } catch (error) {
       console.error(error);
     }
-  };
+};
+useEffect(() => {
+  getAllMovies()
+
+}, [])
+
+ 
 
   return (
     <div className='maincard'>
@@ -42,13 +46,14 @@ const CardUi = () => {
         {/* Card Data */}
         <Box className='carditem'>
           {
+           Data.length>0?(
             Data.map((e) => {
               return (
                 <Link to={`/carddetails/${e.id}`} key={e.id} >
-                  <Box className='rightdetail'>
-                    <Card maxW='sm' style={{width:"350px"}}>
+                  <Box className='rightCard'>
+                    <Card maxW='sm' style={{width:"380px"}}>
                       <Image
-                        src={e.image[2][1]}
+                        src={e.image}
                         style={{width:"100%",height:"300px"}}
                         alt='Green double couch with wooden legs'
                         borderRadius='md'
@@ -70,6 +75,7 @@ const CardUi = () => {
                 </Link>
               )
             })
+           ):<h1 style={{width:"50%",textAlign:"center",margin:"200px 400px",fontSize:"40px",color:"red"}}>Loading Please Wait.......</h1>
           }
         </Box>
 
