@@ -10,8 +10,7 @@ import { myContext } from '../context/context';
 const Navbar = () => {
   const {search,SetSearch,Data,SetData} =useContext(myContext)
   console.log(Data)
-  const change=(e)=>{
-     SetSearch(e.target.value)
+  const change=()=>{
      SetData(Data.filter((e)=>{
       return search.toLowerCase()==='' ?e :e.title.toLowerCase().includes(search);
      }))
@@ -33,10 +32,10 @@ const Navbar = () => {
         pr='4.5rem'
         type='text'
         placeholder='Search'
-        onChange={(e)=>change(e)}
+        onChange={(e)=>SetSearch(e.target.value)}
       />
       <InputRightElement width='4.5rem'>
-        <Button h='1.75rem' size='md' >
+        <Button onClick={change} h='1.75rem' size='md' >
          <BiSearch style={{fontSize:"25px"}}/>
         </Button>
       </InputRightElement>
