@@ -9,7 +9,7 @@ import { myContext } from '../context/context';
 
 const CardUi = () => {
 
-  const { Data, DataFilter,SetData,SetDataFilter } = useContext(myContext)
+  const {search, Data, DataFilter,SetData,SetDataFilter } = useContext(myContext)
  console.log((DataFilter));
   const  getAllMovies = async () => {
     const options = {
@@ -32,7 +32,7 @@ const CardUi = () => {
 useEffect(() => {
   getAllMovies()
 
-}, [])
+}, [search])
 
  
 

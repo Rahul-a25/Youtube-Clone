@@ -1,12 +1,21 @@
 import { Box,Text,InputGroup ,Input,InputRightElement,Button} from '@chakra-ui/react'
-import React from 'react'
+import React, { useContext } from 'react'
 import { GrYoutube} from "react-icons/gr";
 import { ImYoutube2 } from "react-icons/im";
 import { HiMenu} from "react-icons/hi";
 import { BiVideoPlus,BiSearch} from "react-icons/bi";
 import {IoMdNotificationsOutline} from "react-icons/io";
+import { myContext } from '../context/context';
 
 const Navbar = () => {
+  const {search,SetSearch,Data,SetData} =useContext(myContext)
+  console.log(Data)
+  const change=(e)=>{
+     SetSearch(e.target.value)
+     SetData(Data.filter((e)=>{
+      return search.toLowerCase()==='' ?e :e.title.toLowerCase().includes(search);
+     }))
+  }
   return (
     <Box style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
       {/* left icon  */}
@@ -24,6 +33,7 @@ const Navbar = () => {
         pr='4.5rem'
         type='text'
         placeholder='Search'
+        onChange={(e)=>change(e)}
       />
       <InputRightElement width='4.5rem'>
         <Button h='1.75rem' size='md' >

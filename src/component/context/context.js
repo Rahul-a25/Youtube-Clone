@@ -7,9 +7,10 @@ function SendingContext({ children }) {
  const [DataFilter,SetDataFilter] =useState([])
  const [Detail,SetDetails] = useState([])
  const [detailRight,SetdetailRight] = useState([])
+ const [search,SetSearch] =useState('')
 
   return (
-    <myContext.Provider value={{Data,SetData,Detail,SetDetails,DataFilter,SetDataFilter,detailRight,SetdetailRight}}>
+    <myContext.Provider value={{search,SetSearch,Data,SetData,Detail,SetDetails,DataFilter,SetDataFilter,detailRight,SetdetailRight}}>
       {children}
     </myContext.Provider>
   );
